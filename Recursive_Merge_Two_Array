@@ -1,0 +1,32 @@
+#include <iostream>
+#include<vector>
+
+using namespace std;
+
+void merge(vector<int>& a,vector<int>& b,vector<int>& c,int i,int j,int n){
+
+if(i+j == n){
+    return;
+}
+ if(a[i] < b[j] && i < n/2 || j==n/2){
+     c[i+j]=a[i];
+     merge(a,b,c,i+1,j,n);
+ }
+ else{
+     c[i+j]=b[j];
+     merge(a,b,c,i,j+1,n);
+ }
+
+}
+int main(){
+
+    vector<int> a{1,4,9,22,24};
+	vector<int> b{2,3,5,21,67};
+	vector<int> c{0,0,0,0,0,0,0,0,0,0};
+	cout<<"\ninside Main";
+	merge(a,b,c,0,0,10);
+	for(auto x: c){
+	    cout<<x<<" ";
+	}
+	return 0;
+}
